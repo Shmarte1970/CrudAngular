@@ -1,0 +1,39 @@
+<div class="row mt-3">
+    <div class="col-log-4 offset-lg-4">
+        <div class="card bg-secondary mb-3" style="max-width: 25rem;">
+            <div class="card-header text-center">Agregar Usuario</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addUsuario()">
+                    <input formControlName="usuario" type="text" class="form-control"  placeholder="posa el nom">
+                    <span *ngIf="form.get('usuario')?.hasError('required') && form.get('usuario')?.touched">
+                        El usuario es <strong>OBLIGATORIO</strong>
+                    </span>
+                    <input formControlName="telefono" type="text" class="form-control mt-2"  placeholder="posa el telefono">
+                    <span *ngIf="form.get('telefono')?.hasError('required') && form.get('telefono')?.touched">
+                        El telefono es <strong>OBLIGATORIO</strong>
+                    </span>
+                    <input formControlName="poblacion" type="text" class="form-control mt-2"  placeholder="posa la poblacio">      
+                    <span *ngIf="form.get('poblacion')?.hasError('required') && form.get('poblacion')?.touched">
+                        La poblacion es <strong>OBLIGATORIO</strong>
+                    </span>
+                    <input formControlName="dadodeAlta" type="text" class="form-control mt-2"  placeholder="posa qui al dona de alta">   
+                    <span *ngIf="form.get('dadodeAlta')?.hasError('required') && form.get('dadodeAlta')?.touched">
+                        El campo es <strong>OBLIGATORIO</strong>
+                    </span>
+                    <div class="row mt-2 text-center">
+                        <div class="col-lg-6 mt-2">
+                            <button  routerLink="/"  type="button" class="btn btn-light">Volver</button>                             
+                        </div>
+                        <div class="col-lg-6 mt-2">
+                            <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Aceptar</button>                                            
+                        </div>
+                    </div>
+                   
+                    
+                </form>
+                
+            </div>
+          </div>        
+    </div>
+</div>
+
