@@ -1,4 +1,5 @@
 import express,  {Application, Request, Response} from 'express';
+import cors from 'cors';
 import routesUsuario from  '../routes/usuario';
 import db from '../db/connection';
 
@@ -40,6 +41,10 @@ class Server {
         // El body
 
         this.app.use(express.json());
+
+        // cors
+        this.app.use(cors());
+
 
     }
 

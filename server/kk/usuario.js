@@ -65,8 +65,8 @@ const postUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.postUsuario = postUsuario;
 const updatetUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { body } = req;
     const { id } = req.params;
+    const { body } = req;
     try {
         if (usuario_1.default) {
             const usuario = yield usuario_1.default.findByPk(id);
@@ -81,11 +81,15 @@ const updatetUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function*
                 msg: `No existe este usuario con el id ${id}`
             });
         }
+        try { }
+        catch (error) {
+            res.status(404).json({
+                msg: `Error operacion no realizada`
+            });
+        }
     }
-    catch (error) {
-        res.status(404).json({
-            msg: `Error operacion no realizada`
-        });
+    finally {
     }
 });
+
 exports.updatetUsuario = updatetUsuario;

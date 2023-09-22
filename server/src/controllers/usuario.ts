@@ -51,7 +51,7 @@ export const postUsuario = async (req: Request, res: Response) => {
         await Usuario.create (body);
     
         res.json({
-        msg: `Usuario añadido con existo`   
+        msg: `Usuario añadido con existo`,  
         body
     })
 
@@ -67,8 +67,11 @@ export const postUsuario = async (req: Request, res: Response) => {
 
 export const updatetUsuario = async (req: Request, res: Response) => {
 
-    const {id} = req.params;
     const { body } = req;
+    const {id} = req.params;
+    
+
+   
 
     try{
 
@@ -78,7 +81,7 @@ export const updatetUsuario = async (req: Request, res: Response) => {
             await usuario.update(body);
 
             res.json({
-                msg: `Usuario actualizado con existo`   
+                msg: `Usuario actualizado con existo`,
                 body
             })  
 
@@ -86,14 +89,13 @@ export const updatetUsuario = async (req: Request, res: Response) => {
             res.status(404).json ({
                 msg:`No existe este usuario con el id ${id}`
             })
-    
-        
-        }catch (error){
-            res.status(404).json ({
-                msg:`Error operacion no realizada`
-            })
+
         }
 
+    }catch (error){
+        res.status(404).json ({
+            msg:`Error operacion no realizada`
+        })
     }
 
 }

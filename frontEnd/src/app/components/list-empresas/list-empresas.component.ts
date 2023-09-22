@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Empresa } from 'src/app/interfaces/empresa';
+import { EmpresaService } from 'src/app/services/empresa.service';
 
 @Component({
   selector: 'app-list-empresas',
@@ -8,18 +9,21 @@ import { Empresa } from 'src/app/interfaces/empresa';
 })
 export class ListEmpresasComponent implements OnInit{
     listEmpresas: Empresa [] =[
-      {id: 1, usuario: `Armando Bronca`, telefono: `678995325`,  poblacion:`Castellbisbal`, dadoDeAlta: `Pedro Rios` },
-      {id: 2, usuario: `Dolores Fuertes`, telefono: `696040483`,  poblacion:`Barcelona`, dadoDeAlta: `Angeles Soler` }
+     
   ]
 
 
-  constructor() {}
+  constructor(private _productService: EmpresaService) {}
 
   ngOnInit(): void {
-    
+    this.getlistEmpresa()
       
   }
 
-  
+  getlistEmpresa(){
+    this._productService.getListEmpresas().subscribe((data) =>{
+      this.listEmpresas = data;
+    })
+  }
 
 }
