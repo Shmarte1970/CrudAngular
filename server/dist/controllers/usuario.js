@@ -67,25 +67,45 @@ exports.postUsuario = postUsuario;
 const updatetUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
     const { id } = req.params;
-    try {
-        if (usuario_1.default) {
-            const usuario = yield usuario_1.default.findByPk(id);
-            yield usuario.update(body);
-            res.json({
-                msg: `Usuario actualizado con existo`,
-                body
-            });
-        }
-        else {
-            res.status(404).json({
-                msg: `No existe este usuario con el id ${id}`
-            });
-        }
-    }
-    catch (error) {
-        res.status(404).json({
-            msg: `Error operacion no realizada`
+    const usuario = yield usuario_1.default.findByPk(id);
+    if (usuario) {
+        yield usuario.update(body);
+        res.json({
+            msg: `Usuario actualizado con existo`,
+            body
         });
     }
+    else {
+        res.status(404).json({
+            msg: `No existe este usuario con el id ${id}`
+        });
+    }
+    /*
+        try{
+    
+        if(Usuario){
+    
+            const usuario = await Usuario.findByPk(id);
+            
+                await usuario.update(body);
+    
+                res.json({
+                    msg: `Usuario actualizado con existo`,
+                    body
+                })
+    
+            }else{
+                res.status(404).json ({
+                    msg:`No existe este usuario con el id ${id}`
+                })
+    
+            }
+    
+        }catch (error){
+            res.status(404).json ({
+                msg:`Error operacion no realizada`
+            })
+        }
+    */
 });
 exports.updatetUsuario = updatetUsuario;

@@ -69,13 +69,36 @@ export const updatetUsuario = async (req: Request, res: Response) => {
 
     const { body } = req;
     const {id} = req.params;
+    const usuario = await Usuario.findByPk(id);
+
+    
+
+    if(usuario){
+
+            
+
+            await usuario.update(body);
+
+            res.json({
+                msg: `Usuario actualizado con existo`,
+                body
+            })  
+
+        }else{
+            res.status(404).json ({
+                msg:`No existe este usuario con el id ${id}`
+            })
+
+        }
+
     
 
    
-
+/*
     try{
 
     if(Usuario){
+
         const usuario = await Usuario.findByPk(id);
         
             await usuario.update(body);
@@ -97,5 +120,5 @@ export const updatetUsuario = async (req: Request, res: Response) => {
             msg:`Error operacion no realizada`
         })
     }
-
+*/
 }
