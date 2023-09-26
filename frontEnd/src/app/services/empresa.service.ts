@@ -9,11 +9,12 @@ import { Empresa } from '../interfaces/empresa';
 })
 export class EmpresaService {
 
+  
   private myAppUrl: string;
   private myApiUrl: string;
 
   constructor(private http: HttpClient) { 
-    this.myAppUrl = environment.endpoint;
+    this.myAppUrl =  environment.endpoint ;
     this.myApiUrl = 'api/usuarios/'
 
   }
@@ -21,4 +22,5 @@ export class EmpresaService {
   getListEmpresas(): Observable<Empresa[]>{
     return this.http.get<Empresa[]>(`${this.myAppUrl}${this.myApiUrl}`);
   }
+  
 }
