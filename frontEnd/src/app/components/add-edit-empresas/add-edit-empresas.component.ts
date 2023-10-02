@@ -14,7 +14,7 @@ export class AddEditEmpresasComponent implements OnInit {
   constructor (private fb: FormBuilder) {
 
     this.form = this.fb.group({
-      usuario: ['', Validators.required],
+      usuarios: ['', Validators.required],
       telefono: ['', Validators.required],
       poblacion: ['', Validators.required],
       dadodeAlta: ['', Validators.required],
@@ -30,7 +30,7 @@ export class AddEditEmpresasComponent implements OnInit {
   addUsuario() {
      // console.log(this.form.value.usuario);
      const user : Empresa = {
-        usuario: this.form.value.usuario,
+        usuarios: this.form.value.usuarios,
         telefono: this.form.value.telefono,
         poblacion: this.form.value.poblacion,
         dadoDeAlta: this.form.value.dadoDeAlta
