@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Empresa } from 'src/app/interfaces/empresa';
+import { EmpresaService } from 'src/app/services/empresa.service';
 
 @Component({
   selector: 'app-add-edit-empresas',
@@ -11,13 +13,13 @@ export class AddEditEmpresasComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor (private fb: FormBuilder) {
+  constructor (private fb: FormBuilder, private _productService: EmpresaService, private toastr: ToastrService) {
 
     this.form = this.fb.group({
       usuarios: ['', Validators.required],
       telefono: ['', Validators.required],
       poblacion: ['', Validators.required],
-      dadodeAlta: ['', Validators.required],
+      dadoDeAlta: ['', Validators.required],
 
     })
 
@@ -28,7 +30,7 @@ export class AddEditEmpresasComponent implements OnInit {
   }
 
   addUsuario() {
-     // console.log(this.form.value.usuario);
+    
      const user : Empresa = {
         usuarios: this.form.value.usuarios,
         telefono: this.form.value.telefono,
@@ -36,7 +38,10 @@ export class AddEditEmpresasComponent implements OnInit {
         dadoDeAlta: this.form.value.dadoDeAlta
      }
 
-     console.log(user);
+    this._productService.newEmpresa(user).subscribe(() => {
+      this.toastr.success('Usuario agregado correctamente','Usuario agregado');
+      this.form.reset();
+    })
 
   }
 
