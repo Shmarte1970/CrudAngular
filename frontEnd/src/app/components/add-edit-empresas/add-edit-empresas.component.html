@@ -1,4 +1,5 @@
-<div class="row mt-3">
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-3">
     <div class="col-log-4 offset-lg-4">
         <div class="card bg-secondary mb-3" style="max-width: 25rem;">
             <div class="card-header text-center">Agregar Usuario</div>
