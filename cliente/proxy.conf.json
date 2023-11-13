@@ -1,0 +1,10 @@
+{
+    "/api/*": {
+        //"target": "http://localhost:4200",
+       "target": "https://16.171.94.45:8080",
+        "secure": true,
+        "loglevel": "debug",
+        "ChangeOrigin": true      
+        }
+
+}
