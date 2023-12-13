@@ -54,4 +54,10 @@ export class AddEditEmpresasComponent implements OnInit {
 
   }
 
+  refresco() {
+    // Refresco del listado 
+    setInterval("location.reload()", 5000);
+  }
+
+
 }
