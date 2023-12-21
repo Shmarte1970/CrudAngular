@@ -17,7 +17,7 @@ export default sequelize;
 
 const sequelize = new Sequelize('prusuarios', 'admin', 'admin2023', {
 
-  host: '192.168.0.12',
+  host: '192.168.0.16',
   dialect: 'mysql',
 
 });
